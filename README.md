@@ -11,7 +11,7 @@ Kullanıcılar tarafından yüklenen iki farklı belgenin, kimlik ve imzalı for
 
 ## 1. Teknik Tasarım ve Mimari
 
-Bu bölümde temel teknik mimarisi, sistem bileşenleri ve bu bileşenlerin birlikte çalışma prensipleri ele alınmıştır.
+Bu bölümde projenin temel teknik mimarisi, sistem bileşenleri ve bu bileşenlerin birlikte çalışma prensipleri ele alınmıştır.
 
 ### 1.1. Mimari Seçim
 
@@ -34,7 +34,7 @@ Sistem mimarisi, belirli sorumluluklara sahip mantıksal bileşenlerin tanımlan
 
 **Veritabanı:** Sistemin tüm işlem geçmişini, belge içeriklerini ve doğrulama sonuçlarını kalıcı olarak saklayan bileşendir.
 
-Bu bileşenler arasındaki haberleşme, Message Queue üzerinden yönetilen event-driven bir model ile sağlanır. Süreç, API Gateway'in bir talep almasıyla başlar; bu talep, Message Queue'ya bir task mesajı olarak gönderilir. Worker servisler, bu kuyruktan görevleri alır, bağımsız olarak işler ve sonuçlarını merkezi Veritabanı’na yazar. Son olarak Verification Servisi, sistemin son kararını verir.
+Bu bileşenler arasındaki haberleşme, Message Queue üzerinden yönetilen event-driven bir model ile sağlanır. Süreç, API Gateway'in bir talep almasıyla başlar; bu talep, Message Queue'ya bir task mesajı olarak gönderilir. Worker servisler, bu kuyruktan görevleri alır, bağımsız olarak işler ve sonuçlarını merkezi veritabanına yazar. Son olarak Verification Servisi, sistemin son kararını verir.
 
 <p align="center">
   <img width="712" height="531" alt="Diagram" src="https://github.com/user-attachments/assets/4be194cf-8852-4ba2-a045-a0fdcf3d37d6" />
@@ -136,7 +136,8 @@ Prototip aşamasında elde edilen tecrübeler, geleneksel OCR ve kural tabanlı 
 
 Bu AI yeteneklerini sisteme entegre etmek için temelde iki stratejik yol bulunmaktadır: hazır ticari/bulut API'lerini kullanmak veya özel modeller geliştirmek. Google (Document AI), Microsoft (Azure AI Vision) gibi platformların sunduğu hazır API'ler, geliştirme sürecini hızlandırma ve başlangıçta daha düşük Ar-Ge maliyeti avantajları sunar. Ancak, bu servislerin kullanımına bağlı maliyetler ve veri gizliliği veya özelleştirme konularındaki olası kısıtlamalar dikkatle değerlendirilmelidir. Diğer yandan, kendi özel ML modellerimizi geliştirmek, daha yüksek bir başlangıç yatırımı gerektirse de, uzun vadede operasyonel verimlilik, tam veri kontrolü, belirli ihtiyaçlara göre optimize edilmiş performans ve alana özgü yetenekler geliştirme potansiyeli sunar. Bu bağlamda hibrit bir yaklaşım mantıklı olabilir: Temel fonksiyonlar için ticari API'lerle başlayıp, eş zamanlı olarak en kritik veya yüksek hacimli işlemler için optimize edilmiş özel modeller geliştirmeye yatırım yapmak.
 
-Sistemin başarısı için sadece doğruluk yeterli değildir; güvenilirlik ve sürekli iyileşme de kritik öneme sahiptir. Sahtecilik tespiti (anomali detection, liveness check, güvenlik öğesi analizi) ve imza doğrulama gibi katma değerli AI yetenekleri, sistemin yetkinliğini artıracaktır. Yetkili kullanıcıların bildirimlerinden öğrenen mekanizmalar ve modellerin düzenli olarak güncellenmesi, sistemin zamanla daha da akıllanmasını ve yeni zorluklara karşı dirençli kalmasını sağlayacaktır. Yasal uyumluluk çerçevesinde resmi veri kaynaklarıyla entegrasyonlar, doğrulama süreçlerine ek bir güven katmanı ekleyebilir. Son olarak, kurumsal düzeyde bir çözüm için, tüm bu yeteneklerin sağlam bir güvenlik altyapısı (şifrelenmesi, erişim kontrolü, denetim logları) ile korunması ve diğer iş sistemleri
+Sistemin başarısı için sadece doğruluk yeterli değildir; güvenilirlik ve sürekli iyileşme de kritik öneme sahiptir. Sahtecilik tespiti (anomali detection, liveness check, güvenlik öğesi analizi) ve imza doğrulama gibi katma değerli AI yetenekleri, sistemin yetkinliğini artıracaktır. Yetkili kullanıcıların bildirimlerinden öğrenen mekanizmalar ve modellerin düzenli olarak güncellenmesi, sistemin zamanla daha da akıllanmasını ve yeni zorluklara karşı dirençli kalmasını sağlayacaktır. Yasal uyumluluk çerçevesinde resmi veri kaynaklarıyla entegrasyonlar, doğrulama süreçlerine ek bir güven katmanı ekleyebilir. Son olarak, kurumsal düzeyde bir çözüm için, tüm bu yeteneklerin sağlam bir güvenlik altyapısı (şifrelenmesi, erişim kontrolü, denetim logları) ile korunması ve diğer iş sistemleriyle kolay entegrasyon sağlayan esnek API'ler aracılığıyla sunulması, platformun ölçeklenebilir ve sürdürülebilir olmasının temelini atacaktır.
+
 
 <p align="center">
   <img width="1417" height="826" alt="Sistem" src="https://github.com/user-attachments/assets/36cc58c8-0a02-4dcb-973f-2faf0ce2e732" />
