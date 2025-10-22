@@ -1,6 +1,4 @@
 # Case Study: Belge ve Kimlik Doğrulama Sistemi Tasarımı ve Geliştirilmesi
-
-**22.10.2025**  
 **Emir Yorgun**
 
 ---
@@ -37,6 +35,14 @@ Sistem mimarisi, belirli sorumluluklara sahip mantıksal bileşenlerin tanımlan
 **Veritabanı:** Sistemin tüm işlem geçmişini, belge içeriklerini ve doğrulama sonuçlarını kalıcı olarak saklayan bileşendir.
 
 Bu bileşenler arasındaki haberleşme, Message Queue üzerinden yönetilen event-driven bir model ile sağlanır. Süreç, API Gateway'in bir talep almasıyla başlar; bu talep, Message Queue'ya bir task mesajı olarak gönderilir. Worker servisler, bu kuyruktan görevleri alır, bağımsız olarak işler ve sonuçlarını merkezi Veritabanı’na yazar. Son olarak Verification Servisi, sistemin son kararını verir.
+
+<p align="center">
+  <img width="712" height="531" alt="Diagram" src="https://github.com/user-attachments/assets/4be194cf-8852-4ba2-a045-a0fdcf3d37d6" />
+  <br>
+  <i>Figür 1 - Sistemin Akış Diyagramı</i>
+</p>
+
+
 
 ### 1.3. Docker
 
@@ -135,8 +141,13 @@ Sistemin başarısı için sadece doğruluk yeterli değildir; güvenilirlik ve 
 #### Kaynakça
 
 [1] Amazon. (n.d.). Monolithic vs microservices - difference between software development architectures- AWS. Amazon Web Services. https://aws.amazon.com/compare/the-difference-between-monolithic-and-microservices-architecture/
+
 [2] Nag, R. (2022, November 19). A comprehensive guide to siamese neural networks. Medium. https://medium.com/@rinkinag24/a-comprehensive-guide-to-siamese-neural-networks-3358658c0513
+
 [3] Google. (n.d.). Document AI | google cloud. Google. https://cloud.google.com/document-ai
+
 [4] Azure ai vision with OCR and AI: Microsoft Azure. with OCR and AI | Microsoft Azure. (n.d.). https://azure.microsoft.com/en-us/products/ai-services/ai-vision
+
 [5] Yorgun, E. (n.d.). Project’s Docker Hub Page. Docker. https://hub.docker.com/r/hootbu/doc-auth-system
+
 [6] Yorgun, E. (n.d.-a). Hootbu/Doc-AUTH-System. GitHub. https://github.com/hootbu/doc-auth-system
