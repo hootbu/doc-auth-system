@@ -138,7 +138,15 @@ Bu AI yeteneklerini sisteme entegre etmek için temelde iki stratejik yol bulunm
 
 Sistemin başarısı için sadece doğruluk yeterli değildir; güvenilirlik ve sürekli iyileşme de kritik öneme sahiptir. Sahtecilik tespiti (anomali detection, liveness check, güvenlik öğesi analizi) ve imza doğrulama gibi katma değerli AI yetenekleri, sistemin yetkinliğini artıracaktır. Yetkili kullanıcıların bildirimlerinden öğrenen mekanizmalar ve modellerin düzenli olarak güncellenmesi, sistemin zamanla daha da akıllanmasını ve yeni zorluklara karşı dirençli kalmasını sağlayacaktır. Yasal uyumluluk çerçevesinde resmi veri kaynaklarıyla entegrasyonlar, doğrulama süreçlerine ek bir güven katmanı ekleyebilir. Son olarak, kurumsal düzeyde bir çözüm için, tüm bu yeteneklerin sağlam bir güvenlik altyapısı (şifrelenmesi, erişim kontrolü, denetim logları) ile korunması ve diğer iş sistemleri
 
-#### Kaynakça
+<p align="center">
+  <img width="1417" height="826" alt="Sistem" src="https://github.com/user-attachments/assets/36cc58c8-0a02-4dcb-973f-2faf0ce2e732" />
+  <br>
+  <i>Figür 2 - Sistemin Çalışması</i>
+</p>
+
+
+
+### Kaynakça
 
 [1] Amazon. (n.d.). Monolithic vs microservices - difference between software development architectures- AWS. Amazon Web Services. https://aws.amazon.com/compare/the-difference-between-monolithic-and-microservices-architecture/
 
